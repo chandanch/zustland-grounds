@@ -1,18 +1,17 @@
 import classNames from "classnames";
 import "./Task.css";
-import { useStore } from "zustand";
+import { useStore } from "../../store";
 
 function Task({ title }) {
-  const task = useStore((store) =>
-    store.tasks.find((task) => task.title === title)
-  );
+  const tasks = useStore((store) => store.tasks);
+  const task = tasks.find((task) => task.title === title);
 
   return (
     <div className="task">
       <div>{title}</div>
       <div className="bottom-wrapper">
         <div></div>
-        <div className={classNames("status", task.status)}> {task.status} </div>
+        <div className={classNames("status", task.state)}> {task.state} </div>
       </div>
     </div>
   );
