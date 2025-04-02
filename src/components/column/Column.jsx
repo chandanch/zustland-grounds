@@ -8,11 +8,15 @@ function Column({ state }) {
     (store) => store.tasks.filter((task) => task.state === state),
     shallow
   );
-  console.log(tasks);
+
+  const renderTasks = () => {
+    return tasks.map((task) => <Task key={task.title} title={task.title} />);
+  };
+
   return (
     <div className="column">
       <p> {state} </p>
-      <Task title="Task 1" />
+      {renderTasks()}
     </div>
   );
 }
