@@ -1,22 +1,19 @@
-import { useStore } from "zustand";
+import { useStore } from "../../store";
 import Task from "../task/Task";
 import "./Column.css";
 import { shallow } from "zustand/shallow";
 
 function Column({ state }) {
-  const tasks = useStore(
-    (store) => store.tasks.filter((task) => task.state === state),
-    shallow
-  );
+  const tasks = useStore((store) => store.tasks, shallow);
 
-  const renderTasks = () => {
-    return tasks.map((task) => <Task key={task.title} title={task.title} />);
-  };
+  const filteredTasks = tasks.filter((task) => task.state === state);
 
   return (
     <div className="column">
       <p> {state} </p>
-      {renderTasks()}
+      {filteredTasks.map((task) => (
+        <Task key={task.title} title={task.title} />
+      ))}
     </div>
   );
 }
