@@ -1,10 +1,12 @@
 import { create } from "zustand";
 
-const store = () => ({
+const store = (set) => ({
   tasks: [
     { title: "Task 1", state: "PLANNED" },
     { title: "Task 2", state: "ONGOING" },
   ],
+  addTask: (title, state) =>
+    set((store) => ({ tasks: [...store.tasks, { title, state }] })),
 });
 
 export const useStore = create(store);
