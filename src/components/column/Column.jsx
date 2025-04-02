@@ -10,7 +10,10 @@ function Column({ state }) {
 
   return (
     <div className="column">
-      <p> {state} </p>
+      <div className="column-header">
+        <p> {state} </p>
+        <button>Add</button>
+      </div>
       {filteredTasks.map((task) => (
         <Task key={task.title} title={task.title} />
       ))}

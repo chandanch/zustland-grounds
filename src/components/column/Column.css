@@ -8,3 +8,24 @@
   border-radius: 4px;
   padding: 0.5rem;
 }
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-header button {
+  all: unset;
+  color: #000;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.column-header button:hover {
+  background: var(--COLOR-GRAY-LIGHT);
+  color: #fff;
+}
