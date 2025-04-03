@@ -8,7 +8,7 @@ function Task({ title }) {
 
   return (
     <div className="task">
-      <div>{title}</div>
+      <div>{task.title}</div>
       <div className="bottom-wrapper">
         <div></div>
         <div className={classNames("status", task.state)}> {task.state} </div>
