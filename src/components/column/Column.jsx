@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useStore } from "../../store";
 import Task from "../task/Task";
 import "./Column.css";
@@ -11,18 +12,36 @@ function Column({ state }) {
   const addTask = useStore((store) => store.addTask);
 
   const addNewTask = () => {
-    addTask(`Taskada ${state}${Math.random()}`, state);
+    setOpen(false);
+    addTask(text, state);
+    setText("");
   };
+
+  const [text, setText] = useState("");
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="column">
       <div className="column-header">
         <p> {state} </p>
-        <button onClick={addNewTask}>Add</button>
+        <button onClick={() => setOpen(true)}>Add</button>
       </div>
       {filteredTasks.map((task) => (
         <Task key={task.title} title={task.title} />
       ))}
+      {open && (
+        <div className="modal">
+          <div className="modal-content">
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter task title"
+            />
+            <button onClick={addNewTask}>Add Task</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
