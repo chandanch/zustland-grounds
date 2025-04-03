@@ -33,3 +33,8 @@
 .DONE {
   background: var(--COLOR-DONE);
 }
+
+.task img {
+  cursor: pointer;
+  height: 1.25rem;
+}
