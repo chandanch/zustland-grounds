@@ -8,11 +8,17 @@ function Column({ state }) {
 
   const filteredTasks = tasks.filter((task) => task.state === state);
 
+  const addTask = useStore((store) => store.addTask);
+
+  const addNewTask = () => {
+    addTask(`Taskada ${state}${Math.random()}`, state);
+  };
+
   return (
     <div className="column">
       <div className="column-header">
         <p> {state} </p>
-        <button>Add</button>
+        <button onClick={addNewTask}>Add</button>
       </div>
       {filteredTasks.map((task) => (
         <Task key={task.title} title={task.title} />
