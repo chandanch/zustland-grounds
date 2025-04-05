@@ -9,6 +9,7 @@ function Task({ title }) {
   const task = tasks.find((task) => task.title === title);
 
   const deleteTask = useStore((store) => store.deleteTask);
+  const editTask = useStore((store) => store.editTask);
 
   return (
     <div className="task">
